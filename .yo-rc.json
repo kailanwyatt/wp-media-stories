@@ -1,0 +1,20 @@
+{
+  "generator-plugin-wp": {
+    "name": "WP Media Stories",
+    "homepage": "https://wpmediastories.com",
+    "description": "WordPress Media Gallery plugin",
+    "version": "0.1",
+    "author": "WP Media Stories",
+    "authoremail": "info@wpmediastories.com",
+    "authorurl": "https://wpmediastories.com",
+    "license": "GPLv3",
+    "slug": "wp-media-stories",
+    "classname": "WP_Media_Stories",
+    "mainclassname": "WP_Media_Stories",
+    "classprefix": "WP_Media_Stories_",
+    "prefix": "wp_media_stories",
+    "year": 2018,
+    "currentVersionWP": "4.8.1",
+    "plugingenversion": "0.20.2"
+  }
+}

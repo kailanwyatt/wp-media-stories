@@ -1,0 +1,1 @@
+<pre class="wpms-shortcode-embed">[wp_media_story_inline id='<?php echo $post->ID; ?>']</pre>
