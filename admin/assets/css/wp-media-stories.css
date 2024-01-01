@@ -6,7 +6,11 @@
 	height:120px;
 }
 .wpms-remove{
-		position: absolute;
+	position: absolute;
+	padding: 4px 4px 0px 4px !important;
+}
+.wpms-remove .dashicons::before {
+    font-size: 18px;
 }
 
 .modalForm{

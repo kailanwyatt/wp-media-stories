@@ -389,7 +389,7 @@ class WP_Media_Stories_Shortcodes {
 
 		// Allow the query to be manipulated by other plugins
 		$query = apply_filters( 'wpms_galleries_query', $query, $atts );
-
+		
 		$galleries = new WP_Query( $query );
 
 		do_action( 'wpms_galleries_list_before', $atts );

@@ -1,5 +1,3 @@
-const sass = require('node-sass');
-
 module.exports = function (grunt) {
     grunt.loadNpmTasks('gruntify-eslint');
     require('load-grunt-tasks')(grunt);
@@ -55,7 +53,16 @@ module.exports = function (grunt) {
         addtextdomain: {
             dist: {
                 options: { textdomain: pkg.name },
-                target: { files: { src: ['**/*.php'] } }
+                target: {
+                    files: {
+                        src: [
+                            '*.php',
+                            '**/*.php',
+                            '!node_modules/**',
+                            '!tests/**'
+                        ]
+                    }
+                }
             }
         },
         replace: {
@@ -132,14 +139,14 @@ module.exports = function (grunt) {
                     '!.gitignore',
                     '!bower.json',
                     '!Dockunit.json',
-                    '!composer.json',
                     '!Gruntfile.js',
                     '!package.json',
-                    '!*.lock',
-                    '!phpcs.xml',
-                    '!Gulpfile.js',
-                    '!package-lock.json',
                     '!phpunit.xml',
+                    '!yarn-error.log',
+                    '!composer.json',
+                    '!composer.lock',
+                    '!package-lock.json',
+                    '!yarn.lock'
                 ],
                 dest: 'release/' + pkg.version + '/'
             },
@@ -154,7 +161,7 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     mode: 'zip',
-                    archive: './release/<%= pkg.name %>-<%= pkg.version %>.zip'
+                    archive: './release/<%= pkg.name %>.<%= pkg.version %>.zip'
                 },
                 expand: true,
                 cwd: 'release/<%= pkg.version %>',
@@ -196,37 +203,35 @@ module.exports = function (grunt) {
                 options: { banner: compactBannerTemplate }
             }
         },
-        sass: {
-            dist: {
-                options: {
-                    implementation: sass,
-                    sourceMap: false
-                },
-                files: { 'assets/css/media-stories.css': 'assets/css/sass/styles.scss' }
-            }
-        },
-        cssmin: { dist: { files: { 'assets/css/media-stories.min.css': 'assets/css/media-stories.css' } } },
-        usebanner: {
-            taskName: {
-                options: {
-                    position: 'top',
-                    banner: bannerTemplate,
-                    linebreak: true
-                },
-                files: { src: ['assets/css/media-stories.min.css'] }
-            }
-        }
+        concat_css: {
+		    options: {
+		      // Task-specific options go here.
+		    },
+		    all: {
+		      src: [
+				  'assets/css/components/*.css',
+			  ],
+		      dest: 'assets/css/media-stories.css'
+		    },
+		},
+		cssmin: {
+		  target: {
+		    files: [{
+		      expand: true,
+		      cwd: 'assets/css/',
+		      src: ['*.css', '!*.min.css'],
+		      dest: 'assets/css/',
+		      ext: '.min.css'
+		    }]
+		  }
+		},
     });
     grunt.registerTask('scripts', [
         //'eslint',
         'concat',
         'uglify'
     ]);
-    grunt.registerTask('styles', [
-        'sass',
-        'cssmin',
-        //'usebanner'
-    ]);
+    grunt.registerTask('styles', ['concat_css', 'cssmin'] );
     grunt.registerTask('php', [
         'addtextdomain',
         'makepot'
@@ -245,8 +250,7 @@ module.exports = function (grunt) {
         'clean:release',
         'replace:readme_txt',
         'copy',
-        'compress',
-        'wp_deploy'
+        'compress'
     ]);
     grunt.util.linefeed = '\n';
 };

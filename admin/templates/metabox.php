@@ -26,7 +26,7 @@
 			<div class="wp-media-stories-list-content wp-media-stories-list-content-row">
 				<div class="wp-media-stories-list-actions">
 					<div class="wp-media-stories-options">
-						<a href="javascript:;" class="wpms-remove">
+						<a href="javascript:;" class="wpms-remove button button-primary">
 							<span class="dashicons dashicons-trash"></span>
 						</a>
 						<span class="dashicons dashicons-move wpms-holder"></span>

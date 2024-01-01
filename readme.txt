@@ -3,8 +3,8 @@ Contributors: suiteplugins, wpmediastories
 Donate link: https://wpmediastories.com/
 Tags: gallery, wordpress gallery, image gallery, wordpress gallery plugin, wp media stories
 Requires at least: 3.0.1
-Tested up to: 4.9.8
-Stable tag: 0.1
+Tested up to: 5.9.2
+Stable tag: 0.1.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -130,6 +130,11 @@ The show_image and show_title parameters are used to Show/Hide the image and tit
 `[wp_media_story_galleries show_title="false" show_image="true" ]`
 
 == Changelog ==
+
+= 0.1.1 =
+* Revived plugin.
+* Maintenance: Made compatible with WordPress 5.9.2
+* New: Started work on Gutenberg integration
 
 = 0.1 =
 * Released

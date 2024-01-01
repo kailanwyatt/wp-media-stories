@@ -1,6 +1,6 @@
 /**
- * Epic Content Gallery
- * https://www.b4ucode.com
+ * Media Stories
+ * https://www.wpmediastories.com
  *
  * Licensed under the GPLv2+ license.
  */
@@ -40,28 +40,13 @@ window.WPMediaStories = window.WPMediaStories || {};
 		var source   = document.getElementById("um_gallery_media").innerHTML;
 		var template = Handlebars.compile(source);
 		html         = template();
-		jQuery.magnificPopup.open({
-			items: {
-				src: '<div id="um-gallery-modal" class="um-gallery-popup" data-id="' + id + '">Loading icon</div>'
-			},
-			type: 'inline',
-			closeMarkup: '<a title="%title%" class="mfp-close">&#215;</a>',
-			'mainClass': 'um-gallery-modal-wrapper',
-			closeBtnInside: false,
-			closeOnBgClick: false,
-			callbacks: {
-				open: function() {
-					
-					jQuery('.um-user-gallery-image-wrap').css('background-image',  'url(' + image + ')');
-					plugin._um_load_image( null );
+		window.WPMediaStoriesModal.open({
+			src: '<div id="um-gallery-modal" class="um-gallery-popup" data-id="' + id + '">Loading icon</div>'
+		});
+		//jQuery('.um-user-gallery-image-wrap').css('background-image',  'url(' + image + ')');
+		plugin._um_load_image( null );
 
-					jQuery('body').addClass('gallery-open');
-				},
-				close: function() {
-				  jQuery('body').removeClass('gallery-open');
-				}
-			  }
-		}, 0);
+		jQuery('body').addClass('gallery-open');
 	};
 
 	plugin._init_slider = function() {
@@ -150,22 +135,10 @@ window.WPMediaStories = window.WPMediaStories || {};
 			jQuery( '#um-gallery-modal' ).replaceWith( html );
 			plugin._init_slider();
 		} else {
-			jQuery.magnificPopup.open({
-				items: {
-					src: html
-				},
-				type: 'inline',
-				closeMarkup: '<a title="%title%" class="mfp-close">&#215;</a>',
-				'mainClass': 'um-gallery-modal-wrapper',
-				callbacks: {
-					open: function() {
-						plugin._init_slider();
-					},
-					close: function() {
-					  jQuery('body').removeClass('gallery-open');
-					}
-				  }
-			}, 0);
+			window.WPMediaStoriesModal.open({
+				src: html
+			});
+			plugin._init_slider();
 		}
 	}
 

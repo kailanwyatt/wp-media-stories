@@ -3,7 +3,7 @@
  * Plugin Name: WP Media Stories
  * Plugin URI:  https://wpmediastories.com
  * Description: WordPress Media Gallery plugin
- * Version:     0.1
+ * Version:     0.1.1
  * Author:      WP Media Stories
  * Author URI:  https://wpmediastories.com/about
  * Donate link: https://wpmediastories.com
@@ -57,7 +57,7 @@ function wp_media_stories_autoload_classes( $class_name ) {
 }
 spl_autoload_register( 'wp_media_stories_autoload_classes' );
 
-WP_Media_Stories::include_file( 'includes/editors/gutenberg' );
+//WP_Media_Stories::include_file( 'includes/editors/gutenberg' );
 WP_Media_Stories::include_file( 'includes/template-functions' );
 /**
  * Main initiation class.
@@ -72,7 +72,7 @@ final class WP_Media_Stories {
 	 * @var    string
 	 * @since  0.1
 	 */
-	const VERSION = '0.1';
+	const VERSION = '0.1.1';
 
 	/**
 	 * URL of plugin directory.
