@@ -373,7 +373,6 @@
     right: 0;
 }
 .wpms--photo-details {
-    margin: 10px 12%;
 }
 .wpms--counter{
     text-align: center;
@@ -381,6 +380,12 @@
 .wpms--image {
     text-align: center;
 }
+
+.wpms--image img {
+    width: 100%;
+    height: auto;
+}
+
 .wpms--inline-image-block{
     position: relative; 
 }
